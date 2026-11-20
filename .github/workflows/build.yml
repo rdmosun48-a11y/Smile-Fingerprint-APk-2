@@ -12,6 +12,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     steps:
       - name: Checkout
@@ -34,14 +35,37 @@ jobs:
           sdkmanager "platforms;android-35"
           sdkmanager "build-tools;35.0.0"
 
+      - name: Extract Android Project
+        run: |
+          mkdir project
+          unzip -q "OnePlusEmojiFpAnim-Android15-SDK35 (2).zip" -d project
+
+      - name: Locate Gradle Project
+        run: |
+          PROJECT=$(find project -name settings.gradle.kts \
+            -o -name settings.gradle | head -n 1)
+
+          if [ -z "$PROJECT" ]; then
+            echo "Gradle settings file not found"
+            find project -maxdepth 4 -type f
+            exit 1
+          fi
+
+          DIR=$(dirname "$PROJECT")
+          echo "PROJECT_DIR=$DIR" >> "$GITHUB_ENV"
+
+          echo "Project found: $DIR"
+          ls -la "$DIR"
+
       - name: Build APK
         run: |
-          gradle --version
+          cd "$PROJECT_DIR"
           gradle --no-daemon assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v7
         with:
           name: OnePlus-Fingerprint-APK
-          path: app/build/outputs/apk/debug/*.apk
+          path: project/**/build/outputs/apk/**/*.apk
           if-no-files-found: error
+          retention-days: 7
