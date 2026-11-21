@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2026-11-21T03:25:50.204Z",
+  "osAndUserAgent": {
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+    "platform": "Linux armv81",
+    "detectedOs": "Android",
+    "detectedAndroidVersion": "10",
+    "estimatedAndroidApiLevel": null,
+    "detectedDeviceModel": "K",
+    "isMobile": true
+  },
+  "screenDensity": {
+    "devicePixelRatio": 3,
+    "estimatedAndroidDensityBucket": "xxhdpi (~480dpi)",
+    "logicalWidthPx": 360,
+    "logicalHeightPx": 804,
+    "physicalWidthPx": 1080,
+    "physicalHeightPx": 2412,
+    "viewportWidthPx": 360,
+    "viewportHeightPx": 627,
+    "colorDepthBits": 24
+  },
+  "deviceCapabilities": {
+    "publicKeyCredentialSupported": true,
+    "platformAuthenticatorAvailable": true,
+    "vibrationSupported": true,
+    "maxTouchPoints": 5
+  },
+  "apkPackageConfig": {
+    "applicationId": "com.oneplus.fp.batman.anim",
+    "namespace": "com.oneplus.fp.emoji.anim",
+    "minSdk": 31,
+    "targetSdk": 35,
+    "compileSdk": 36,
+    "versionCode": 1601,
+    "versionName": "1.6.1-oneplus-ce4",
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86_64",
+      "x86"
+    ],
+    "requiredPermissions": [
+      "android.permission.USE_BIOMETRIC"
+    ],
+    "requiredHardwareFeatures": [
+      {
+        "feature": "com.android.hardware.fingerprint",
+        "androidStandardFeature": "android.hardware.fingerprint",
+        "manifestRequired": false,
+        "runtimeCheck": "BiometricManager.canAuthenticate(BIOMETRIC_STRONG)"
+      },
+      {
+        "feature": "android.hardware.touchscreen",
+        "manifestRequired": true
+      }
+    ],
+    "systemOverlayRemovedFromManifest": true,
+    "targetDeviceNote": "OnePlus Nord CE 4 (OxygenOS 15/16) rejects sideloaded APKs declaring <overlay android:targetPackage=\"com.android.systemui\" />; removed from standalone APK manifest."
+  },
+  "installFailureDiagnostics": {
+    "commonCausesOnOnePlusCE4": [
+      "Previous build of com.oneplus.fp.emoji.anim or com.oneplus.fp.batman.anim installed with a different GitHub Actions debug keystore signature",
+      "Older build still declared <overlay android:targetPackage=\"com.android.systemui\" /> in AndroidManifest.xml",
+      "Attempted to install an unsigned APK instead of app-debug.apk",
+      "OxygenOS \"Install from Unknown Sources\" disabled for Chrome/Files app"
+    ],
+    "adbDiagnosticCommand": "adb install -r -d app-debug.apk"
+  }
+}
